@@ -1,11 +1,11 @@
 from passlib.context import CryptContext
-from fastapi import HTTPException, status
+from fastapi import HTTPException, status, Depends
 from datetime import datetime, timedelta
 import jwt
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 from app.schemas.token import TokenSchema, TokenData
-from app.db.models import User, TokenBlacklist
+from app.db.models import User, TokenBlacklist, Role
 from app.core.config import SECRET_KEY
 
 ALGORITHM = "HS256"
@@ -92,6 +92,11 @@ def decode_payload(token: str, db: Session):
         raise credentials_exception
     return user
     
+def check_is_admin(current_user: User, db: Session):
+    if current_user.role == Role.ADMIN :
+        return True
+    raise HTTPException(detail="No enough permission", status_code=status.HTTP_403_FORBIDDEN)
+
 
 
 

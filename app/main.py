@@ -1,21 +1,33 @@
 import sys
 from pathlib import Path
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
-if str(ROOT_DIR) not in sys.path:
-    sys.path.insert(0, str(ROOT_DIR))
+path_to_exam2 = Path(__file__).resolve().parent.parent
+if str(path_to_exam2) not in sys.path:
+    sys.path.insert(0, str(path_to_exam2))
 
 import uvicorn
 from fastapi import FastAPI
-from api.routers.auth import auth_router
+from fastapi.staticfiles import StaticFiles
+from app.api.routers.auth import auth_router  
+from app.api.routers.categories import router
 
 app = FastAPI()
+
+app.mount('/static', StaticFiles(directory="static"), name="static")
 
 app.include_router(
     auth_router,
     prefix="/api/v1",
-    tags=["user"]
+    tags=["User"]
 )
+
+app.include_router(
+    router=router,
+    prefix="/api/v1",
+    tags=["Category"]
+)
+
+
 
 
 if __name__ == "__main__":

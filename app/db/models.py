@@ -29,6 +29,7 @@ class Category(AbstractBase):
     products = relationship("Product", back_populates="category")
 
 class Product(AbstractBase):
+    __tablename__ = "products"
     title: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=False)
     price: Mapped[float] = mapped_column(Numeric(precision=10, scale=2), nullable=False)

@@ -7,6 +7,7 @@ from app.schemas.token import TokenSchema
 from app.crud.crud_user import create_user
 from api.dependencies import get_db, get_current_user
 from app.db.models import Role, User, TokenBlacklist
+import secrets
 
 auth_router = APIRouter()
 
@@ -42,6 +43,32 @@ def logout(current_user: User = Depends(get_current_user), token: HTTPAuthorizat
 
     
 
+
+
 @auth_router.get("/me")
 def read_users_me(current_user: User = Depends(get_current_user)):
     return {"email": current_user.email, "full_name": current_user.full_name}
+
+
+
+
+
+def create_admin(email: str, password: str, full_name: str, phone_number: str,  db: Session = Depends(get_db)):
+    hashed = hash_password(password=password)
+    admin = User(email=email, password=hashed, full_name=full_name, phone=phone_number, role=Role.ADMIN)
+    db.add(admin)
+    db.commit()
+    db.refresh(admin)
+    return admin
+
+
+@auth_router.post("/create_super_admin", response_model=UserOutSchema)
+def create_super_admin(body: UserLoginSchema, db: Session = Depends(get_db)):
+    user = create_admin(
+        email=body.email, 
+        password=body.password, 
+        full_name="Super Admin",
+        phone_number=secrets.token_urlsafe(10),
+        db=db
+    )
+    return user
