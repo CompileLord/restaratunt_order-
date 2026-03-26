@@ -5,7 +5,7 @@ from app.core.security import  create_tokens, hash_password, check_available_pho
 from app.schemas.user import UserOutSchema, UserSchema, UserLoginSchema
 from app.schemas.token import TokenSchema
 from app.crud.crud_user import create_user
-from api.dependencies import get_db, get_current_user
+from app.api.dependencies import get_db, get_current_user
 from app.db.models import Role, User, TokenBlacklist
 import secrets
 

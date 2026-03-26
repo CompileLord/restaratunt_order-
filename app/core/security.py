@@ -5,8 +5,10 @@ import jwt
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 from app.schemas.token import TokenSchema, TokenData
+from app.schemas.user import UserOutSchema
 from app.db.models import User, TokenBlacklist, Role
 from app.core.config import SECRET_KEY
+from fastapi import Depends
 
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 15
@@ -91,11 +93,6 @@ def decode_payload(token: str, db: Session):
     if user is None:
         raise credentials_exception
     return user
-    
-def check_is_admin(current_user: User, db: Session):
-    if current_user.role == Role.ADMIN :
-        return True
-    raise HTTPException(detail="No enough permission", status_code=status.HTTP_403_FORBIDDEN)
 
 
 

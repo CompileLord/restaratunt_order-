@@ -27,6 +27,18 @@ app.include_router(
     tags=["Category"]
 )
 
+from app.api.routers.products import router as products_router
+from app.api.routers.cart import router as cart_router
+from app.api.routers.orders import router as orders_router
+from app.api.routers.reviews import router as reviews_router
+from app.api.routers.users import router as users_router
+
+app.include_router(products_router, prefix="/api/v1")
+app.include_router(cart_router, prefix="/api/v1")
+app.include_router(orders_router, prefix="/api/v1")
+app.include_router(reviews_router, prefix="/api/v1")
+app.include_router(users_router, prefix="/api/v1")
+
 
 
 

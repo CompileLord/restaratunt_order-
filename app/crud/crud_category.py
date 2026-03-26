@@ -24,6 +24,14 @@ def update_product(db: Session, category_id: int, new_title: str, new_descriptio
     db.refresh(category)
     return category
 
+def delete_category(db: Session, category_id):
+    category = db.query(Category).filter(Category.id == category_id)
+    if not category:
+        return None
+    category.delete()
+    db.commit()
+    return "Success"
+
 def get_by_id_category(db: Session, category_id: int):
     category = db.query(Category).options(selectinload(Category.products)).filter(Category.id==category_id).first()
     return category
