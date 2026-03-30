@@ -14,6 +14,8 @@ class OrderStatusSchema(str, Enum):
 class PaymentMethodSchema(str, Enum):
     CASH = "cash"
     CARD = "card"
+    CASH_UPPER = "CASH"
+    CARD_UPPER = "CARD"
 
 
 class OrderCreate(BaseModel):

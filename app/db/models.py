@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer, Text, ForeignKey, Numeric, Boolean
+from sqlalchemy import String, Integer, Text, ForeignKey, Numeric, Boolean, Enum as SQLEnum
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from enum import Enum
 from app.db.base import AbstractBase
@@ -47,6 +47,8 @@ class CartItem(AbstractBase):
     product_id: Mapped[int] = mapped_column(Integer, ForeignKey("products.id"))
     quantity: Mapped[int] = mapped_column(Integer, default=1)
 
+    product = relationship("Product")
+
 class OrderStatus(Enum):
     NEW = "new"
     PREPARING = "preparing"
@@ -61,9 +63,9 @@ class PaymentMethod(Enum):
 class Order(AbstractBase):
     __tablename__ = "orders"
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"))
-    status: Mapped[OrderStatus] = mapped_column(default=OrderStatus.NEW)
+    status: Mapped[OrderStatus] = mapped_column(SQLEnum(OrderStatus, values_callable=lambda x: [e.value for e in x]), default=OrderStatus.NEW)
     total_amount: Mapped[float] = mapped_column(Numeric(precision=10, scale=2), nullable=False)
-    payment_method: Mapped[PaymentMethod] = mapped_column(nullable=False)
+    payment_method: Mapped[PaymentMethod] = mapped_column(SQLEnum(PaymentMethod, values_callable=lambda x: [e.value for e in x]), nullable=False)
     delivery_address: Mapped[str] = mapped_column(Text, nullable=False)
 
 class OrderItem(AbstractBase):

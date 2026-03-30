@@ -30,6 +30,5 @@ def delete_product(db: Session, product_id: int):
         return "Success"
     return None
 
-def update_product(new_title: str, new_price: float, new_image_url: str, new)
         
 

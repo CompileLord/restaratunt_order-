@@ -25,7 +25,7 @@ def register_view(body: UserSchema, db: Session = Depends(get_db)):
 
 
 @auth_router.post("/login", response_model=TokenSchema)
-def login_view(form: UserLoginSchema = Depends(), db: Session=Depends(get_db)):
+def login_view(form: UserLoginSchema, db: Session=Depends(get_db)):
     user = authenticate_user(db=db, email=form.email, password=form.password)
     if not user:
         raise HTTPException(detail="Invalid Credentials", status_code=status.HTTP_400_BAD_REQUEST)
@@ -47,7 +47,12 @@ def logout(current_user: User = Depends(get_current_user), token: HTTPAuthorizat
 
 @auth_router.get("/me")
 def read_users_me(current_user: User = Depends(get_current_user)):
-    return {"email": current_user.email, "full_name": current_user.full_name}
+    return {
+        "id": current_user.id,
+        "email": current_user.email, 
+        "full_name": current_user.full_name,
+        "role": current_user.role.value if hasattr(current_user.role, 'value') else current_user.role
+    }
 
 
 

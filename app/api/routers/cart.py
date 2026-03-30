@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from typing import List
 from app.api.dependencies import get_db, get_current_user
 from app.db.models import CartItem, Product
@@ -9,7 +9,7 @@ router = APIRouter(prefix="/cart", tags=["cart"])
 
 @router.get("/", response_model=List[CartItemResponse])
 def get_cart(db: Session = Depends(get_db), current_user=Depends(get_current_user)):
-    return db.query(CartItem).filter(CartItem.user_id == current_user.id).all()
+    return db.query(CartItem).options(joinedload(CartItem.product)).filter(CartItem.user_id == current_user.id).all()
 
 @router.post("/", response_model=CartItemResponse, status_code=status.HTTP_201_CREATED)
 def add_to_cart(item: CartItemCreate, db: Session = Depends(get_db), current_user=Depends(get_current_user)):
@@ -20,6 +20,10 @@ def add_to_cart(item: CartItemCreate, db: Session = Depends(get_db), current_use
     existing_item = db.query(CartItem).filter(CartItem.user_id == current_user.id, CartItem.product_id == item.product_id).first()
     if existing_item:
         existing_item.quantity += item.quantity
+        if existing_item.quantity <= 0:
+            db.delete(existing_item)
+            db.commit()
+            return CartItemResponse(id=0, user_id=current_user.id, product_id=item.product_id, quantity=0, product={"id": product.id, "title": product.title, "price": float(product.price), "image_url": product.image_url})
         db.commit()
         db.refresh(existing_item)
         return existing_item

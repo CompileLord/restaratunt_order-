@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gourmet Burger Details | Culinary Curator</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-container": "#4c2b00",
+              "surface-dim": "#d3d5d5",
+              "secondary-fixed": "#dee1f8",
+              "on-secondary-fixed": "#3b3f50",
+              "primary-fixed": "#ff7949",
+              "surface-tint": "#a63300",
+              "surface-container-high": "#e1e3e3",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#dee1f8",
+              "primary-fixed-dim": "#f7652f",
+              "surface-bright": "#f6f6f6",
+              "background": "#f6f6f6",
+              "on-secondary": "#f2f2ff",
+              "error-dim": "#9f0519",
+              "surface-container-low": "#f0f1f1",
+              "error": "#b31b25",
+              "on-tertiary-fixed": "#2b1600",
+              "secondary": "#575b6d",
+              "surface-variant": "#dbdddd",
+              "on-surface": "#2d2f2f",
+              "inverse-primary": "#fe6a34",
+              "on-error-container": "#570008",
+              "on-tertiary": "#fff0e5",
+              "surface-container-highest": "#dbdddd",
+              "error-container": "#fb5151",
+              "on-secondary-fixed-variant": "#575b6d",
+              "secondary-fixed-dim": "#d0d3e9",
+              "primary-container": "#ff7949",
+              "on-primary-fixed-variant": "#551600",
+              "outline": "#767777",
+              "on-primary": "#ffefeb",
+              "tertiary-fixed": "#fd9d1a",
+              "outline-variant": "#acadad",
+              "on-secondary-container": "#4d5163",
+              "on-primary-fixed": "#000000",
+              "tertiary-container": "#fd9d1a",
+              "on-background": "#2d2f2f",
+              "on-tertiary-fixed-variant": "#583300",
+              "secondary-dim": "#4b4f61",
+              "primary": "#a63300",
+              "on-error": "#ffefee",
+              "inverse-on-surface": "#9c9d9d",
+              "on-surface-variant": "#5a5c5c",
+              "primary-dim": "#922c00",
+              "inverse-surface": "#0c0f0f",
+              "tertiary-dim": "#744400",
+              "on-primary-container": "#451000",
+              "surface": "#f6f6f6",
+              "surface-container": "#e7e8e8",
+              "tertiary": "#854f00",
+              "tertiary-fixed-dim": "#ed9000"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f6;
+        }
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_24px_24px_-12px_rgba(45,47,47,0.04)]">
+<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-[#a63300] dark:text-[#ff7949] tracking-tight italic">Culinary Curator</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-[#a63300] dark:text-[#ff7949] font-bold border-b-2 border-[#a63300] font-plus-jakarta text-sm" href="#">Home</a>
+<a class="text-[#2d2f2f] dark:text-slate-400 font-medium hover:opacity-80 transition-opacity font-plus-jakarta text-sm" href="#">Explore</a>
+<a class="text-[#2d2f2f] dark:text-slate-400 font-medium hover:opacity-80 transition-opacity font-plus-jakarta text-sm" href="#">Orders</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#2d2f2f] hover:opacity-80 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-[#2d2f2f] hover:opacity-80 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-4 max-w-6xl mx-auto">
+<!-- Main Content Shell: Asymmetric Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Hero & Details -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Hero Image Container -->
+<div class="relative group overflow-hidden rounded-[2rem] bg-surface-container-low shadow-[0_24px_48px_-12px_rgba(0,0,0,0.08)]">
+<img class="w-full h-[400px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of a premium gourmet burger with melting cheddar cheese, fresh lettuce, and artisan bun, dramatic side lighting on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3RBnNbOmlTIqQ8slTPQMfUoYGxJBh4uLKA2VSBUBy0vESuuPBpl7zRWZZKHSEjhLoXvbSXkZR5y5dPx4wRgJCo33Z9WKHGHkkLcMrk_8y4UEVbVbqZl5B6VRJQXmc0H18MHGzcDz82axjZufsfJM-FB7RV8HQaFoDCZlLzeu03I4T4Rgv_buy8IpXFCIHni2H5jsCIo7UXXzLMQRkEtQG5kc3BkKk4_CmOgZMuz1FV7bJjVeNIl4MW-f9F046kFoZxljGBCxgOQY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<span class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3 inline-block">Best Seller</span>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">The Heritage Truffle Burger</h1>
+</div>
+</div>
+<!-- Product Information Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Ingredients Card -->
+<div class="p-8 bg-surface-container-lowest rounded-[2rem] shadow-sm border border-outline-variant/10">
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+                            Ingredients
+                        </h3>
+<p class="text-on-surface-variant leading-relaxed font-body">
+                            Beef patty, aged white cheddar, butter lettuce, heirloom tomato, secret curator sauce, toasted brioche bun.
+                        </p>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant text-xs font-semibold rounded-full">Organic</span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant text-xs font-semibold rounded-full">Grass-fed</span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant text-xs font-semibold rounded-full">Local</span>
+</div>
+</div>
+<!-- Nutrition / Info Card -->
+<div class="p-8 bg-surface-container-low rounded-[2rem] border border-transparent">
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                            Chef's Note
+                        </h3>
+<p class="text-on-surface-variant leading-relaxed font-body italic text-sm">
+                            "Our signature dry-aged beef is sourced from local farms and flame-grilled to perfection. Recommended medium-rare."
+                        </p>
+<div class="mt-6 flex justify-between items-center text-xs font-bold text-on-surface/60 uppercase tracking-widest">
+<span>850 kcal</span>
+<span>45m Prep</span>
+</div>
+</div>
+</div>
+<!-- Review List Section -->
+<section class="p-8 bg-surface-container-lowest rounded-[2rem] shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold">Community Reviews</h3>
+<div class="flex items-center gap-2">
+<span class="text-2xl font-black text-on-surface">4.8</span>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star_half</span>
+</div>
+</div>
+</div>
+<!-- Scrollable Reviews -->
+<div class="space-y-6 max-h-[400px] overflow-y-auto pr-4 custom-scrollbar">
+<div class="pb-6 border-b border-surface-container">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">JS</div>
+<div>
+<p class="font-bold text-sm">Julian S.</p>
+<p class="text-[10px] text-on-surface-variant">Verified Buyer • 2 days ago</p>
+</div>
+</div>
+<div class="flex text-tertiary scale-75">
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Absolute masterpiece. The truffle flavor is subtle but adds so much depth. Best burger in the city by far!</p>
+</div>
+<div class="pb-6 border-b border-surface-container">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center font-bold text-on-primary-container">AM</div>
+<div>
+<p class="font-bold text-sm">Aria M.</p>
+<p class="text-[10px] text-on-surface-variant">Verified Buyer • 1 week ago</p>
+</div>
+</div>
+<div class="flex text-tertiary scale-75">
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Meat was perfectly cooked. Only wish the bun was slightly less toasted, but still 4 stars easily.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Checkout & Write Review (Sticky) -->
+<div class="lg:col-span-5">
+<div class="sticky top-28 space-y-6">
+<!-- Checkout Card -->
+<div class="p-8 bg-surface-container-lowest rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-primary/5">
+<div class="flex justify-between items-end mb-8">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Unit Price</p>
+<p class="text-4xl font-black text-on-surface">$24.00</p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-xl">
+<button class="w-8 h-8 flex items-center justify-center text-primary font-bold hover:bg-surface-container transition-colors rounded-lg">-</button>
+<span class="font-bold text-lg min-w-[20px] text-center">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary font-bold hover:bg-surface-container transition-colors rounded-lg">+</button>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary scale-90">schedule</span>
+<span>Estimated delivery: 25 - 35 mins</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary scale-90">eco</span>
+<span>Eco-friendly packaging included</span>
+</div>
+</div>
+<button class="w-full py-5 rounded-2xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-lg shadow-xl shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined filled-icon">shopping_bag</span>
+                            Add to Cart — $24.00
+                        </button>
+</div>
+<!-- Write a Review Card -->
+<div class="p-8 bg-surface-container-low rounded-[2rem]">
+<h4 class="text-lg font-bold mb-4">Write a Review</h4>
+<div class="flex gap-2 mb-6">
+<button class="text-tertiary"><span class="material-symbols-outlined filled-icon">star</span></button>
+<button class="text-tertiary"><span class="material-symbols-outlined filled-icon">star</span></button>
+<button class="text-tertiary"><span class="material-symbols-outlined filled-icon">star</span></button>
+<button class="text-tertiary"><span class="material-symbols-outlined filled-icon">star</span></button>
+<button class="text-outline-variant"><span class="material-symbols-outlined">star</span></button>
+</div>
+<textarea class="w-full p-4 bg-surface-container-lowest border-none focus:ring-2 focus:ring-primary/30 rounded-xl text-sm font-body placeholder:text-on-surface-variant/40 min-h-[120px] mb-4" placeholder="Tell us about your culinary experience..."></textarea>
+<button class="w-full py-3 bg-on-surface text-surface rounded-xl font-bold text-sm hover:opacity-90 transition-opacity">
+                            Post Review
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f6f6f6] dark:bg-slate-950 w-full py-12 px-8 mt-20 border-t border-[#f0f1f1] dark:border-slate-800">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col gap-2">
+<span class="text-sm font-bold text-[#a63300]">Culinary Curator</span>
+<p class="font-inter text-xs text-slate-500">© 2024 Culinary Curator. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-inter text-xs text-slate-500 hover:text-[#FF6B35] transition-colors" href="#">About</a>
+<a class="font-inter text-xs text-slate-500 hover:text-[#FF6B35] transition-colors" href="#">Terms</a>
+<a class="font-inter text-xs text-slate-500 hover:text-[#FF6B35] transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Shell -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-slate-950/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(0,0,0,0.05)] rounded-t-[1.5rem]">
+<div class="flex flex-col items-center justify-center bg-[#ff7949]/10 text-[#a63300] dark:text-[#ff7949] rounded-2xl px-5 py-2">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#2d2f2f]/60 dark:text-slate-500 px-5 py-2 hover:bg-[#f0f1f1] transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#2d2f2f]/60 dark:text-slate-500 px-5 py-2 hover:bg-[#f0f1f1] transition-colors">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#2d2f2f]/60 dark:text-slate-500 px-5 py-2 hover:bg-[#f0f1f1] transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</div>
+</div>
+</body></html>

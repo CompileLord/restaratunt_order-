@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culinary Curator</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a63300",
+              "primary-container": "#ff7949",
+              "on-primary": "#ffefeb",
+              "on-primary-container": "#451000",
+              "secondary": "#575b6d",
+              "surface": "#f6f6f6",
+              "surface-container": "#e7e8e8",
+              "surface-container-low": "#f0f1f1",
+              "surface-container-highest": "#dbdddd",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#2d2f2f",
+              "on-surface-variant": "#5a5c5c",
+              "error": "#b31b25",
+              "outline": "#767777",
+              "background": "#f6f6f6",
+              "on-background": "#2d2f2f",
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "2rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-background font-body text-on-background antialiased page-transition">
+
+    <!-- Global Nav (Rendered mostly here, state toggled via JS) -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_24px_24px_-12px_rgba(45,47,47,0.04)] hidden transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-8 cursor-pointer" onclick="app.navigate('catalog')">
+                <span class="text-2xl font-bold text-primary tracking-tight italic font-headline">Culinary Curator</span>
+                
+                <div class="hidden md:flex items-center bg-surface-container-low rounded-xl px-4 py-2 w-80 group focus-within:ring-2 focus-within:ring-primary/30 transition-all">
+                    <span class="material-symbols-outlined text-outline text-lg">search</span>
+                    <input id="searchInput" type="text" class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline/60 ml-2" placeholder="Search for delicacies...">
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <!-- User Links -->
+                <div class="hidden md:flex gap-6 items-center" id="navLinks">
+                    <!-- Populated by JS -->
+                </div>
+                
+                <!-- Action Icons -->
+                <div class="flex items-center gap-4">
+                    <button onclick="app.navigate('cart')" class="relative p-2 hover:bg-surface-container-high rounded-full transition-colors active:scale-95">
+                        <span class="material-symbols-outlined text-on-surface">shopping_cart</span>
+                        <span id="cartCountBadge" class="absolute top-1 right-1 bg-error text-[10px] text-white font-bold h-4 w-4 flex items-center justify-center rounded-full hidden">0</span>
+                    </button>
+                    <button id="profileBtn" class="p-2 hover:bg-surface-container-high rounded-full transition-colors active:scale-95">
+                        <span class="material-symbols-outlined text-on-surface">account_circle</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main App Container -->
+    <div id="app" class="min-h-screen">
+        <!-- JS injects views here -->
+    </div>
+
+    <!-- Global Toast Container -->
+    <div id="toastContainer" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 transition-all"></div>
+
+    <!-- Application Script -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

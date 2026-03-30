@@ -25,7 +25,7 @@ def create_order(order_in: OrderCreate, db: Session = Depends(get_db), current_u
     new_order = Order(
         user_id=current_user.id,
         total_amount=total_amount,
-        payment_method=order_in.payment_method,
+        payment_method=order_in.payment_method.value.lower(),
         delivery_address=order_in.delivery_address
     )
     db.add(new_order)

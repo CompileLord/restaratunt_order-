@@ -1,0 +1,70 @@
+# Food Delivery App - Product Requirements Document
+
+## Overview
+A comprehensive web application for a food delivery service, featuring a seamless customer journey from onboarding to order tracking, and a utilitarian admin dashboard for managing the menu, orders, and users.
+
+## Part 1: The Customer Journey (Regular User)
+
+### 1. Onboarding & Authentication
+*   **Sign Up Screen (`/auth/register`):** Clean, appetizing welcome page. Fields: Full Name, Email, Phone Number, Password. Primary "Create Account" button.
+*   **Login Screen (`/auth/login`):** Fields for Email and Password. Primary "Log In" button. Redirects to main catalog on success.
+
+### 2. Main Page / Catalog (Discovery)
+*   **Global Header:** Logo, Search Bar (triggers `?search=`), Profile Icon, Floating Cart Icon with red notification badge.
+*   **Category Navigation:** Horizontal, scrollable Category Pills (e.g., 🍕 Pizza, 🍣 Sushi). Filters menu via `?category_id=`.
+*   **Filters & Sorting:** Price Sliders (Min/Max), Sort Dropdown (Price: Low to High, High to Low, Newest).
+*   **Food Grid:** Product Cards with Image, Discount Badge (if `discount_percent > 0`), Title, Short Description, Price Block (with crossed-out old price if discounted), and "Add to Cart" button. Shows toast notification on add.
+
+### 3. Product Detail Modal / Page (`/products/{id}`)
+*   Large Hero Image, Ingredients List.
+*   **Reviews Section:** Average Rating (gold stars), Scrollable Review List.
+*   **Write a Review:** Accessible only if the user has previously ordered the item. 5-star selector and text box.
+
+### 4. Cart & Checkout Experience
+*   **Shopping Cart (Sidebar/Page):** Item list with image/name/price, Quantity Controls `[-] 2 [+]`, Trash Icon, "Empty Cart" link, Total Order Value.
+*   **Checkout Screen:** Delivery Address (large text area), Payment Method Toggle (Cash on Delivery or Credit Card), "Place Order" button (high-contrast). Redirects to "Success" page.
+
+### 5. User Profile & Order History
+*   **Profile Settings:** Editable Name/Phone, "Save Changes" button.
+*   **My Orders Tab:** Chronological list of past/current orders.
+*   **Order Cards:** ID, Date, Total, Status Badge (New, Preparing, Delivering, Completed, Cancelled).
+*   **Order Details Expander:** Shows items with the exact price paid at the time.
+*   **Reorder Button:** Re-adds items to the active cart.
+
+## Part 2: The Administrator Experience (Admin Dashboard)
+
+### 1. Admin Sidebar Navigation
+*   Links to: Live Orders, Menu Manager, Categories, Users.
+
+### 2. Live Order Management (`/admin/orders`)
+*   Kanban Board or Data Table with live updates.
+*   Order details: Customer Info, Items.
+*   Status Dropdown: Manually move order status (triggers `PATCH /admin/orders/{id}`).
+
+### 3. Menu (Products) Manager (`/products/`)
+*   Inventory Table with "Active" Toggle Switch and Discount Input (0-100).
+*   **Add New Dish Modal:** Form for Name, Description, Ingredients, Price, Image, Category.
+
+### 4. Category Manager (`/categories/`)
+*   Manage food categories that appear as pills on the customer home screen.
+
+### 5. User Management (`/users/`)
+*   Customer Directory with Role Switcher (User/Admin).
+
+## Part 3: System States & Micro-Interactions
+*   **Loading States:** Skeleton screens for cards/text; Button spinners for actions.
+*   **Empty States:** Custom illustrations for Empty Cart, No Search Results, and No Past Orders.
+*   **Error Handling:** Non-intrusive toasts (Success/Green, Warning/Yellow, Error/Red).
+
+## Part 4: Security & Access Flows
+*   **Session Expired:** Smooth modal login prompt, redirecting back to the previous context.
+*   **Role-Based Visibility:** "Go to Admin Dashboard" button only for admins. 403 Forbidden page for unauthorized access.
+
+## Part 5: Review & Rating Workflow
+*   **Post-Order Prompt:** Pop-up after order completion asking for a rating.
+*   **Submission:** Gold star rating and optional text.
+*   **Public View:** Chronological reviews with distribution summary bar.
+
+## Part 6: Responsive Design
+*   **Mobile:** Bottom Navigation Bar, Swipe-to-delete in cart, Sticky "Checkout" button.
+*   **Desktop:** Masonry grid (3-4 columns), Hover effects on cards, Split-screen Checkout.
