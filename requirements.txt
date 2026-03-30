@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlalchemy
+alembic
+passlib[argon2]
+PyJWT
+python-dotenv
+python-multipart
+pydantic
+pydantic-settings
