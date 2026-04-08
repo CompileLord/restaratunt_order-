@@ -98,7 +98,7 @@ Once the server is running, you can access the interactive documentation at:
 ### 🚀 Как начать
 
 #### 1. Предварительные требования
-- Python 3.8+
+- Python 3.12+
 - Виртуальное окружение (рекомендуется)
 
 #### 2. Установка
